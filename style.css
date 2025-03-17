@@ -1,0 +1,184 @@
+:root {
+    --background-color: #dfd4d5;
+    --text-color: black;
+    --changelog-color: #a7999a;
+    --changelog-border-color: #000000;
+    --timeline-color: #215769;
+    --btn-color: #ac888b;
+    --btn-border-color: #745558;
+    --btn-hover-color: #745558;
+    --theme-switch-color: black;
+    --theme-switch-hover: #ca0ebb;
+}
+
+[data-theme="dark"] {
+    --background-color: #272727;
+    --text-color: #FF661F;
+    --changelog-color: #000000;
+    --changelog-border-color: #ffffff;
+    --timeline-color: #49caf5;
+    --btn-color: #52393b;
+    --btn-border-color: #2b1e1f;
+    --theme-switch-color: #7a0771;
+    --theme-switch-hover: #a70d9a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Big Shoulders", sans-serif;
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     min-height: 100vh; /* centralize the whole body on the screen */
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+[data-theme="dark"] #light-icon {
+    display: block;
+}
+
+[data-theme="dark"] #dark-icon {
+    display: none;
+}
+
+#light-icon {
+    display: none;
+}
+
+#theme-switch {
+    position: absolute;
+    top: 0;
+    right: 0 ;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--changelog-color);
+    color: var(--theme-switch-color);
+}
+
+#theme-switch:hover {
+    color: var(--theme-switch-hover);
+}
+
+.changelog {
+    position: relative;
+    padding: 5em;
+    box-shadow: 0 0 15px var(--changelog-border-color);
+    border-radius: 15px;
+    background-color: var(--changelog-color);
+}
+
+/* div class to create the line in the middle */
+.timeline {
+    position: relative;
+    margin-left: -2em;
+    margin-right: -2em;
+}
+
+/* line in the middle */
+.timeline:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background-color: var(--timeline-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+}
+
+.changelog-title {
+    text-align: center;
+    padding-bottom: 2em;
+}
+
+.changelog-title p {
+    margin: 20px;
+    color: white;
+}
+
+.changelog-item {
+    position: relative;
+    margin-bottom: 25px;
+    width: 50%;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.item-date {
+    margin-top: 0.5em;
+    margin-bottom: -0.5em;
+    color: white;
+}
+
+/* dot in the line for each changelog item */
+.changelog-item:before {
+    content: "";
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    border-radius: 15px;
+    background-color: var(--timeline-color);
+    top: 10px;
+    right: -6px;
+}
+
+/* position the even changelog items on the right side of the box */
+.changelog-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+    padding: 0 0 0 20px;
+}
+
+/* position of the dot for the changelog items on the right side */
+.changelog-item:nth-child(even)::before {
+    left: -4px;
+}
+
+.changelog-btn {
+    margin-top: 3em;
+    margin-bottom: -3em;
+    text-align: center;
+}
+
+.changelog-btn button {
+    font-weight: 700;
+    background-color: var(--btn-color);
+    padding: 10px 30px;
+    border-radius: 7px;
+    border: 0.1px solid var(--btn-border-color);
+}
+
+.changelog-btn button:hover {
+    background-color: var(--btn-hover-color);
+    cursor: pointer;
+}
+
+@media (max-width: 425px) {
+    .changelog {
+        padding: 2em 0;
+    }
+
+    .timeline {
+        margin: 0;
+    }
+
+    .changelog-btn {
+        margin-top: 1em;
+        margin-bottom: -1em;
+    }
+}
